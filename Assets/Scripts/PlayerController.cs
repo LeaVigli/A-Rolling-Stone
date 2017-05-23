@@ -1,28 +1,39 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController1_1 : MonoBehaviour {
 
-	public float speed;
-	public Text countText;
-	public Text endText;
-	public Text quitText;
+    public float speed,temps,timerDebut=0.0f;
+    public Text countText;
+    public Text timeText;	
+    public Text quitText;
+	public int endGame;
 
-	private Rigidbody rb;
-	private int count;
+	private GameObject water;
+	private float minuterie;
+
+    private Rigidbody rb;
+    private int count,changeSpeed;
 
 	float touchDuration;
 	Touch touch;
 
 	void Start ()
 	{
+		PlayerPrefs.SetInt("NumNiveau", 1);
+    	Screen.orientation = ScreenOrientation.Portrait;
+		PlayerPrefs.SetFloat("Temps", 0.0f);
+		timerDebut=Time.deltaTime;
+
 		rb = GetComponent<Rigidbody>();
 		count = 0;
 		SetCountText ();
-		endText.text = "";
-		quitText.text = "Double-touch the screen to exit";
-	}
+		minuterie =0.0f;
+		quitText.text = "Double-touch the screen to quit";
+		water = GameObject.FindGameObjectWithTag("DangerWater");
+    }
 
 	void Main ()
 	{
@@ -45,9 +56,12 @@ public class PlayerController : MonoBehaviour {
 				touchDuration = 0.0f;
 			}
 		}
+			timerDebut+=Time.deltaTime;
+		reduceSpeed();
+		disapearWater();
+
+
 	}
-
-
 	void FixedUpdate () //Chercher les différences avec Update
 	{
 		if (SystemInfo.deviceType == DeviceType.Desktop) //Mouvement du joueur sur ordinateur
@@ -65,7 +79,7 @@ public class PlayerController : MonoBehaviour {
 			//Création du vecteur force
 			Vector3 movement = new Vector3 (Input.acceleration.x, 0.0f, Input.acceleration.y);
 			//Ajout de la force au rigidbody
-			rb.AddForce(movement * speed/* * Time.deltaTime*/);
+			rb.AddForce(movement* 2 * speed/* * Time.deltaTime*/);
 		}
 	}
 
@@ -81,37 +95,74 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
+       // water2 = GameObject.FindGameObjectWithTag("");
 		if (other.gameObject.CompareTag ("Pick Up")) //Si l'objet a pour tag "pick up"...
 		{
 			other.gameObject.SetActive (false); //On désactive l'objet de la scène
-			count++; //Et on rajoute 1 au compteur
+			count+=1000; //Et on rajoute 1 au compteur
 			//speed++;
 			SetCountText();
 		}
+		if (other.gameObject.CompareTag("Finishing"))
+        {
+       		PlayerPrefs.SetInt("endGame", 1);
+			tempsDeJeu ();
+			SceneManager.LoadScene("Score");
+        }
 
-	}
-
-	void OnCollisionEnter(Collision other) 
-	{
-		if (other.gameObject.CompareTag ("Arrival"))
-		{
-			SetEndText ();
+		if (other.gameObject.CompareTag("Speed"))
+        {
+			other.gameObject.SetActive (false); //On désactive l'objet de la scène
+			speed=speed*2.0f;
+			changeSpeed=1;
 		}
-	}
+
+        if (other.gameObject.CompareTag("DangerWater"))
+        {
+        	PlayerPrefs.SetInt("endGame", -1);
+			tempsDeJeu ();
+			SceneManager.LoadScene("Score");
+        }
+
+    }
 
 	void SetCountText()
 	{
-		countText.text = "Count: " + count.ToString (); //On affichera "Count : " et le contenu de la variable count convertit en chaîne de caractères
+		countText.text = "Score : " + count.ToString (); //On affichera "Count : " et le contenu de la variable count convertit en chaîne de caractères
 	}
 
-	void SetEndText()
-	{
-		if (count >= 10) {
-			endText.text = "You win!";
+	float minuteur(){
+		minuterie += Time.deltaTime;
+		return minuterie;
+	}
+
+	void disapearWater(){
+		if (minuteur()> 17 || minuteur()<7){
+			water.gameObject.SetActive (true);
+			if(minuteur()>15){
+				minuterie=0;
+			}
 		}
-		else 
-		{
-			endText.text = "You loose!";
+		if (minuteur() > 7 && minuteur() < 17){
+			water.gameObject.SetActive (false); //On désactive l'objet de la scène
 		}
+	}
+
+	void reduceSpeed(){
+		if(changeSpeed==1){
+			if(temps>10){
+				speed = speed/2;
+				temps=0;
+			}else{
+				temps = temps+Time.deltaTime;
+			}
+		}
+	}
+
+	public void tempsDeJeu (){
+		float timer;
+		timer = timerDebut;
+		PlayerPrefs.SetFloat("Temps", timer);
+
 	}
 }

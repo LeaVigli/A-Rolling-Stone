@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class PlayerController1_1 : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
     public float speed,temps,timerDebut=0.0f;
     public Text countText;
@@ -11,7 +11,6 @@ public class PlayerController1_1 : MonoBehaviour {
     public Text quitText;
 	public int endGame;
 
-	private GameObject water;
 	private float minuterie;
 
     private Rigidbody rb;
@@ -32,7 +31,6 @@ public class PlayerController1_1 : MonoBehaviour {
 		SetCountText ();
 		minuterie =0.0f;
 		quitText.text = "Double-touch the screen to quit";
-		water = GameObject.FindGameObjectWithTag("DangerWater");
     }
 
 	void Main ()
@@ -58,10 +56,8 @@ public class PlayerController1_1 : MonoBehaviour {
 		}
 			timerDebut+=Time.deltaTime;
 		reduceSpeed();
-		disapearWater();
-
-
 	}
+
 	void FixedUpdate () //Chercher les différences avec Update
 	{
 		if (SystemInfo.deviceType == DeviceType.Desktop) //Mouvement du joueur sur ordinateur
@@ -117,13 +113,6 @@ public class PlayerController1_1 : MonoBehaviour {
 			changeSpeed=1;
 		}
 
-        if (other.gameObject.CompareTag("DangerWater"))
-        {
-        	PlayerPrefs.SetInt("endGame", -1);
-			tempsDeJeu ();
-			SceneManager.LoadScene("Score");
-        }
-
     }
 
 	void SetCountText()
@@ -136,17 +125,7 @@ public class PlayerController1_1 : MonoBehaviour {
 		return minuterie;
 	}
 
-	void disapearWater(){
-		if (minuteur()> 17 || minuteur()<7){
-			water.gameObject.SetActive (true);
-			if(minuteur()>15){
-				minuterie=0;
-			}
-		}
-		if (minuteur() > 7 && minuteur() < 17){
-			water.gameObject.SetActive (false); //On désactive l'objet de la scène
-		}
-	}
+
 
 	void reduceSpeed(){
 		if(changeSpeed==1){

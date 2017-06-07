@@ -10,8 +10,7 @@ public class MainScript : MonoBehaviour {
     
 
     void Start (){
-            Screen.orientation = ScreenOrientation.Portrait;
-
+        Screen.orientation = ScreenOrientation.Portrait;
     }
 
 	public void Monde1()
@@ -40,16 +39,16 @@ public class MainScript : MonoBehaviour {
     {
         if(PlayerPrefs.GetInt("NumMonde")==1)
         {
-            SceneManager.LoadScene("Niveau 1-1");
+            SceneManager.LoadScene("1-1");
         }else{
              if(PlayerPrefs.GetInt("NumMonde")==2){
-                SceneManager.LoadScene("Niveau 2-1");
+                SceneManager.LoadScene("2-1");
              }else{
                 if(PlayerPrefs.GetInt("NumMonde")==3){
-                    SceneManager.LoadScene("Niveau 3-1");
+                    SceneManager.LoadScene("3-1");
                 }else{
                     if(PlayerPrefs.GetInt("NumMonde")==4){
-                        SceneManager.LoadScene("Niveau 4-1");
+                        SceneManager.LoadScene("4-1");
                     }
                 }
              }
@@ -60,16 +59,16 @@ public class MainScript : MonoBehaviour {
     {
         if(PlayerPrefs.GetInt("NumMonde")==1)
         {
-            SceneManager.LoadScene("Niveau 1-2");
+            SceneManager.LoadScene("1-2");
         }else{
              if(PlayerPrefs.GetInt("NumMonde")==2){
-                SceneManager.LoadScene("Niveau 2-2");
+                SceneManager.LoadScene("2-2");
              }else{
                 if(PlayerPrefs.GetInt("NumMonde")==3){
-                    SceneManager.LoadScene("Niveau 3-2");
+                    SceneManager.LoadScene("3-2");
                 }else{
                     if(PlayerPrefs.GetInt("NumMonde")==4){
-                        SceneManager.LoadScene("Niveau 4-2");
+                        SceneManager.LoadScene("4-2");
                     }
                 }
              }

@@ -99,12 +99,22 @@ public class PlayerController : MonoBehaviour {
 			//speed++;
 			SetCountText();
 		}
+		if (other.gameObject.CompareTag ("SuperPickUp")) {
+			other.gameObject.SetActive (false);
+			count += 2000;
+			SetCountText ();
+		}
 		if (other.gameObject.CompareTag("Finishing"))
         {
        		PlayerPrefs.SetInt("endGame", 1);
 			tempsDeJeu ();
 			SceneManager.LoadScene("Score");
         }
+		if (other.gameObject.CompareTag ("Key")) {
+			other.gameObject.SetActive (false);
+			count += 500;
+
+		}
 
 		if (other.gameObject.CompareTag("Speed"))
         {
@@ -112,7 +122,6 @@ public class PlayerController : MonoBehaviour {
 			speed=speed*2.0f;
 			changeSpeed=1;
 		}
-
     }
 
 	void SetCountText()

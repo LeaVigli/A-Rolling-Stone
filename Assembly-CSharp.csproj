@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5C7957AD-5D9A-47BD-19BF-0E8894925F5C}</ProjectGuid>
+    <ProjectGuid>{29AE68BA-7BCD-5E83-5589-B4D5C0A22279}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,6 +55,10 @@
      <Compile Include="Assets\Scripts\Animations.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\EndGame.cs" />
+     <Compile Include="Assets\Scripts\InterrupterController.cs" />
+     <Compile Include="Assets\Scripts\KeyController.cs" />
+     <Compile Include="Assets\Scripts\KeyRotator.cs" />
+     <Compile Include="Assets\Scripts\LampController.cs" />
      <Compile Include="Assets\Scripts\MainScript.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerController1_1.cs" />
@@ -64,6 +68,7 @@
      <Compile Include="Assets\Scripts\Rotator.cs" />
      <Compile Include="Assets\Scripts\ShootingSystem.cs" />
      <Compile Include="Assets\Scripts\SpinningCube.cs" />
+     <Compile Include="Assets\Scripts\StairsController.cs" />
      <Compile Include="Assets\Scripts\TelesiegeController.cs" />
      <Compile Include="Assets\Scripts\WoodController.cs" />
      <Compile Include="Assets\Scripts\WoodDrown.cs" />
@@ -74,6 +79,7 @@
      <None Include="Assets\ProCore\ProBuilder\About\changelog.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\DiffuseVertexColor.shader" />
      <None Include="Assets\Objets 3D\Single_rock\readme.txt" />
+     <None Include="Assets\Wood texture floor_01\readme.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_FaceHighlight.shader" />
      <None Include="Assets\ProCore\ProBuilder\Shader\UnlitSolidColor.shader" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_ReferenceUnlit.shader" />
@@ -82,6 +88,7 @@
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexPicker.shader" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_HideVertices.shader" />
+     <None Include="Assets\Models\Key\readME keys.txt" />
      <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_UnlitVertexColor.shader" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_FacePicker.shader" />
@@ -117,24 +124,24 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="ProBuilderCore-Unity5">
- <HintPath>C:/Users/Leen/Documents/Unity Projects/A-rolling-stone/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+ <HintPath>C:/Users/Alice/Documents/Ecole/DUT Info/PTUT/A-Rolling-Stone/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="ProBuilderMeshOps-Unity5">
- <HintPath>C:/Users/Leen/Documents/Unity Projects/A-rolling-stone/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+ <HintPath>C:/Users/Alice/Documents/Ecole/DUT Info/PTUT/A-Rolling-Stone/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="KDTree">
- <HintPath>C:/Users/Leen/Documents/Unity Projects/A-rolling-stone/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
+ <HintPath>C:/Users/Alice/Documents/Ecole/DUT Info/PTUT/A-Rolling-Stone/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
  </Reference>
  <Reference Include="pb_Stl">
- <HintPath>C:/Users/Leen/Documents/Unity Projects/A-rolling-stone/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
+ <HintPath>C:/Users/Alice/Documents/Ecole/DUT Info/PTUT/A-Rolling-Stone/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
  </Reference>
  <Reference Include="Triangle">
- <HintPath>C:/Users/Leen/Documents/Unity Projects/A-rolling-stone/Assets/ProCore/ProBuilder/Classes/ClassesLib/Triangle.dll</HintPath>
+ <HintPath>C:/Users/Alice/Documents/Ecole/DUT Info/PTUT/A-Rolling-Stone/Assets/ProCore/ProBuilder/Classes/ClassesLib/Triangle.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{09FD951D-A25E-F556-99E9-668EFA2DE1E9}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{751BAE6A-7553-F877-A3AA-AD8F1FD88A6A}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

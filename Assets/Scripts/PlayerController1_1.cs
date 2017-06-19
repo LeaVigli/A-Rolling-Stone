@@ -12,6 +12,7 @@ public class PlayerController1_1 : MonoBehaviour {
 	public int endGame;
 
 	private GameObject water;
+	private GameObject door;
 	private float minuterie;
 
 	private Rigidbody rb;
@@ -103,6 +104,7 @@ public class PlayerController1_1 : MonoBehaviour {
 			//speed++;
 			SetCountText();
 		}
+
 		if (other.gameObject.CompareTag("Finishing"))
 		{
 			PlayerPrefs.SetInt("endGame", 1);
@@ -122,6 +124,12 @@ public class PlayerController1_1 : MonoBehaviour {
 			PlayerPrefs.SetInt("endGame", -1);
 			tempsDeJeu ();
 			SceneManager.LoadScene("Score");
+		}
+
+		if (other.gameObject.CompareTag ("Empty")) {
+			PlayerPrefs.SetInt ("endGame", -1);
+			tempsDeJeu ();
+			SceneManager.LoadScene ("Score");
 		}
 
 	}

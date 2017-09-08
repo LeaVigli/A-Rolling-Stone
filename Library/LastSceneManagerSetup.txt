@@ -1,4 +1,4 @@
 sceneSetups:
-- path: "Assets/_Sc\xE8nes/Main.unity"
+- path: "Assets/_Sc\xE8nes/EcranPrincipal.unity"
   isLoaded: 1
   isActive: 1

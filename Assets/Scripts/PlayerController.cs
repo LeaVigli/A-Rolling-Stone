@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour {
 	private float minuterie;
 
     private Rigidbody rb;
-    private int count,changeSpeed;
+    private int count;
+    //private int changeSpeed;
 
 	float touchDuration;
 	Touch touch;
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 			timerDebut+=Time.deltaTime;
-		reduceSpeed();
+		//reduceSpeed();
 	}
 
 	void FixedUpdate () //Chercher les différences avec Update
@@ -98,21 +99,23 @@ public class PlayerController : MonoBehaviour {
 			count+=1000; //Et on rajoute 1 au compteur
 			//speed++;
 			SetCountText();
-		}
-		if (other.gameObject.CompareTag("Finishing"))
-        {
+		} else if (other.gameObject.CompareTag("Finishing")) {
        		PlayerPrefs.SetInt("endGame", 1);
 			tempsDeJeu ();
 			SceneManager.LoadScene("Score");
-        }
-
-		if (other.gameObject.CompareTag("Speed"))
-        {
-			other.gameObject.SetActive (false); //On désactive l'objet de la scène
-			speed=speed*2.0f;
-			changeSpeed=1;
 		}
+        if (other.gameObject.CompareTag("Key"))
+        {
+            other.gameObject.SetActive(false);
+            count += 500;
 
+        }
+        if (other.gameObject.CompareTag("SuperPickUp"))
+        {
+            other.gameObject.SetActive(false);
+            count += 2000;
+            SetCountText();
+        }
     }
 
 	void SetCountText()
@@ -127,16 +130,16 @@ public class PlayerController : MonoBehaviour {
 
 
 
-	void reduceSpeed(){
-		if(changeSpeed==1){
-			if(temps>10){
-				speed = speed/2;
-				temps=0;
-			}else{
-				temps = temps+Time.deltaTime;
-			}
-		}
-	}
+	//void reduceSpeed(){
+	//	if(changeSpeed==1){
+	//		if(temps>10){
+	//			speed = speed/2;
+	//			temps=0;
+	//		}else{
+	//			temps = temps+Time.deltaTime;
+	//		}
+	//	}
+	//}
 
 	public void tempsDeJeu (){
 		float timer;

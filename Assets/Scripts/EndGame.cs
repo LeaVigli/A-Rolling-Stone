@@ -9,12 +9,12 @@ public class EndGame : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if(PlayerPrefs.GetInt("endGame")==1){
-		endGame.text = "Victoire";
+		    endGame.text = "Victoire";
 		}else{
 			if(PlayerPrefs.GetInt("endGame")==-1){
-		endGame.text = "Défaite";
+		        endGame.text = "Défaite";
 			}else{
-		endGame.text = "Erreur";				
+		        endGame.text = "Erreur";				
 			}
 		}
 		temps=PlayerPrefs.GetFloat("Temps");

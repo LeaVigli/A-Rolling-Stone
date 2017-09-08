@@ -6,6 +6,19 @@ TagManager:
   tags:
   - Pick Up
   - Arrival
+  - SpecialWall
+  - Finishing
+  - Speed
+  - DangerWater
+  - DangerLava
+  - Key
+  - SuperPickUp
+  - Stairs2
+  - Empty
+  - Porte
+  - Stairs
+  - Wood
+  - WoodUp
   layers:
   - Default
   - TransparentFX

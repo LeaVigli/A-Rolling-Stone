@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainScript : MonoBehaviour {
 
     private string nomMonde= "Monde ";
-    private string nomScene="Niveau ";
+    //private string nomScene="Niveau ";
     
 
     void Start (){
@@ -75,9 +75,38 @@ public class MainScript : MonoBehaviour {
         }
     }
 
+    public void Niveau3()
+    {
+        if (PlayerPrefs.GetInt("NumMonde") == 1)
+        {
+            SceneManager.LoadScene("1-3");
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("NumMonde") == 2)
+            {
+                SceneManager.LoadScene("2-3");
+            }
+            else
+            {
+                if (PlayerPrefs.GetInt("NumMonde") == 3)
+                {
+                    SceneManager.LoadScene("3-3");
+                }
+                else
+                {
+                    if (PlayerPrefs.GetInt("NumMonde") == 4)
+                    {
+                        SceneManager.LoadScene("4-3");
+                    }
+                }
+            }
+        }
+    }
+
     public void Restart()
     {   
-        string RestartScene = nomScene + PlayerPrefs.GetInt("NumMonde")+"-"+ PlayerPrefs.GetInt("NumNiveau");
+        string RestartScene = PlayerPrefs.GetInt("NumMonde")+"-"+ PlayerPrefs.GetInt("NumNiveau");
         SceneManager.LoadScene(RestartScene);  
     }
         
@@ -86,7 +115,7 @@ public class MainScript : MonoBehaviour {
     {
            if (PlayerPrefs.GetInt("NumNiveau")<=2){
             int numProchainNiveau = 1+PlayerPrefs.GetInt("NumNiveau");
-            string NextScene = nomScene + PlayerPrefs.GetInt("NumMonde")+"-"+ numProchainNiveau;
+            string NextScene = PlayerPrefs.GetInt("NumMonde")+"-"+ numProchainNiveau;
             SceneManager.LoadScene(NextScene);
         }else{
             if(PlayerPrefs.GetInt("NumMonde")<=2){

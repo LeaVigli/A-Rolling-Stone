@@ -56,8 +56,11 @@ public class PlayerController1_1 : MonoBehaviour {
 				touchDuration = 0.0f;
 			}
 		}
-		timerDebut+=Time.deltaTime;
+
+		timerDebut += Time.deltaTime;
+
 		reduceSpeed();
+		
 		disapearWater();
 
 
